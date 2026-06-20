@@ -1,6 +1,6 @@
 import express from "express";
 import { protectRoute } from "../middleware/auth.middleware.js";
-import { getUserForSiderbar } from "../controllers/message.controller.js";
+import { getUserForSidebar } from "../controllers/message.controller.js";
 import { getMessages } from "../controllers/message.controller.js";
 import { sendMessage } from "../controllers/message.controller.js";
 
@@ -9,7 +9,7 @@ import { sendMessage } from "../controllers/message.controller.js";
 const router = express.Router();
 
 
-router.get("/user",protectRoute, getUserForSiderbar)
+router.get("/user",protectRoute, getUserForSidebar)
 router.get("/:id",protectRoute,getMessages)
 
 router.post("/send/:id", protectRoute, sendMessage)
