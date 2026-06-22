@@ -8,6 +8,8 @@ import SettingPage from "./pages/SettingPage";
 import { userAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import {Loader} from "lucide-react"
+
+import {Toaster} from "react-hot-toast"
 // import { axiosInstance } from "./lib/axios";
 
 const App = () => {
@@ -40,6 +42,8 @@ const App = () => {
         <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login"/>} />
 
        </Routes>
+
+       <Toaster/>
     </div>
   );
 }
