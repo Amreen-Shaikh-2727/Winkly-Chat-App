@@ -104,6 +104,7 @@ export const updateProfile = async (req,res) =>{
             
         }
 
+        
         const uploadResponse =  await cloudinary.uploader.upload(profilePic);
         const updateUser = await User.findByIdAndUpdate(userId,{profilePic :uploadResponse.secure_url}, {new : true})
 
@@ -126,4 +127,17 @@ export const checkAuth = (req,res) =>{
         console.log("Error in checkAuth controller",error.message);
         res.status(500).json({message : "Internal Server Error"});
     }
-}
+};
+
+export const testCloudinary = async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(
+      "https://res.cloudinary.com/demo/image/upload/sample.jpg"
+    );
+
+    return res.json(result);
+  } catch (error) {
+    console.dir(error, { depth: null });
+    return res.status(500).json(error);
+  }
+};

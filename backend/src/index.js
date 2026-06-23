@@ -16,7 +16,8 @@ const PORT = process.env.PORT;
 
 
 app.use(cookieParser()); 
-app.use(express.json());  //allows u to save data out of body
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));  //allows u to save data out of body
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
