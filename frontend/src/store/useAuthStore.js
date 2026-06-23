@@ -6,6 +6,7 @@ authUser : null,
 isSigningUp : false,
 isLoggingIn : false,
 isUpdatingProfile:false,
+onlineUsers : [],
 
 
 isCheckingAuth: true,
