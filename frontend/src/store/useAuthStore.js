@@ -95,9 +95,17 @@ isCheckingAuth: true,
     const {authUser} = get()
     if (!authUser || get().socket?.connected) return;
 
-    const socket = io(BASE_URL)
+    const socket = io(BASE_URL , {
+      query:{
+        userId: authUser._id,
+      },
+    }
+    )
      set({ socket: socket });
-    socket.connect()
+    socket.connect();
+    socket.on("getOnlineUsers" , (userIds) => {
+      set({onlineUsers : userIds})
+    })
   },
 
   disconnectSocket: () => {

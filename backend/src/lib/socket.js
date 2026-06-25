@@ -13,12 +13,26 @@ const io = new Server(server , {
     }
 });
 
+export function getReceiverSocketId(userId) {
+    return userSocketMap(userId);
+}
+
+//use ti store online users
+const userSocketMap = {};  // { userId : socket}
 
 io.on("connection", (socket) => {
     console.log("A user connected",socket.id);
 
+    const userId = socket.handshake.query.userId;
+    if (userId) userSocketMap[userId] = socket.id;
+
+    //io.emit is used to send event to all connected client
+    io.emit("getOnlineUsers",Object.keys(userSocketMap));
+
     socket.on("disconnect" , () => {
         console.log("A user disconnected" ,socket.id);
+        io.emit("getOnlineUsers",Object.keys(userSocketMap));
+        delete userSocketMap[userId];
     });
 })
 export {io ,app , server}

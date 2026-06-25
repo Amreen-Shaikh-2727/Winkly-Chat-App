@@ -14,10 +14,10 @@ import {Toaster} from "react-hot-toast"
 // import { axiosInstance } from "./lib/axios";
 
 const App = () => {
-  const {checkAuth ,authUser,isCheckingAuth} = userAuthStore()
+  const {checkAuth ,authUser,isCheckingAuth , onlineUsers} = userAuthStore()
 
   const { theme } = useThemeStore();
-
+  console.log({onlineUsers})
 
   useEffect(()=>{
     document.documentElement.setAttribute("data-theme", theme);
