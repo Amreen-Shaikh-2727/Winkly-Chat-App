@@ -50,8 +50,9 @@ subscribeToMessages : () => {
     if(!selectedUser) return;
 
     const socket = userAuthStore.getState().socket;
-    //todod opt later
     socket.on("newMessage" , (newMessage) => {
+    if(newMessage.senderId !== selectedUser._id ) return
+
         set({
             messages : [...get().messages,newMessage],
 
@@ -65,7 +66,6 @@ unsubscribeFromMessages : () => {
 },
 
 
-//to do optemixe this later
 setSelectedUser: (selectedUser) => set({selectedUser}),
 
 
