@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import {axiosInstance} from "../lib/axios.js"
 import {io} from "socket.io-client";
 
-const BASE_URL = import.meta.env.MODE === "production" ?"http://localhost:5001" : 'https://winkly-chat-app.onrender.com';
+const BASE_URL = import.meta.env.MODE === "development" ?"http://localhost:5001" : 'https://winkly-chat-app.onrender.com';
 export const userAuthStore = create((set, get) => ({
 authUser : null,
 isSigningUp : false,
