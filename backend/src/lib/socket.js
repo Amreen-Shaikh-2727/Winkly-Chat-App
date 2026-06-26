@@ -14,7 +14,7 @@ const io = new Server(server , {
 });
 
 export function getReceiverSocketId(userId) {
-    return userSocketMap(userId);
+    return userSocketMap[userId];
 }
 
 //use ti store online users
