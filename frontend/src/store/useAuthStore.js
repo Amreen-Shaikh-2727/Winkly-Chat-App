@@ -6,7 +6,7 @@ import {io} from "socket.io-client";
 const BASE_URL = import.meta.env.MODE === "development" ?"http://localhost:5001" : 'https://winkly-chat-app.onrender.com';
 export const userAuthStore = create((set, get) => ({
 authUser : null,
-isSigningUp : false,Deploym
+isSigningUp : false,
 isLoggingIn : false,
 isUpdatingProfile:false,
 onlineUsers : [],
